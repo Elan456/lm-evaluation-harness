@@ -1,0 +1,27 @@
+task: clemson_databases
+dataset_path: json
+dataset_name: null
+dataset_kwargs:
+  data_files: /home/ema8/f24-nvidia/ta-benchmarking/benchmark_generation/questions_200_harness_formatting.json
+
+process_docs: !function utils.process_docs
+
+test_split: train
+
+# Define the prompt for the model
+doc_to_text: "{{question}}\nAnswer:"
+
+# Define the correct answer (index in the choices)
+doc_to_target: answer
+
+# Choices field to log likelihood over
+doc_to_choice: "{{choices}}"
+
+# Metrics definition
+metric_list:
+  - metric: acc
+
+output_type: multiple_choice
+
+metadata:
+  version: 0
